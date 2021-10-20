@@ -117,6 +117,6 @@ class Veiculo:
 
 #Run
 if __name__ == '__main__':
-    v1 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='1234-1234',potencia_motor=90)
-    v2 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='1234-1234',potencia_motor=90)
-    print(v1.estoque_veiculo())
+    v1 = Veiculo(tipo_veiculo='c',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2020,placa_veiculo='1234-1234',potencia_motor=90)
+    v2 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='1235-1234',potencia_motor=90)
+
