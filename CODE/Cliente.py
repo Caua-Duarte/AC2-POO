@@ -26,6 +26,5 @@ class Cliente:
 
 cli1 = Cliente("Fran", 1998, 11972225869, "04423974899", '0', "Rua 1", 5, "Bairro velho", "MK", "BA", "frangmail.com")
 
-
 cli1.ValidEmail()
 cli1.ValidaCli()
