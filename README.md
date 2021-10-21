@@ -2,8 +2,15 @@
 
 # AC2-POO
 
-A AC2 de POO é a segunda avaliação continua da matéria de Programação Orientada a Objeto.
-Tem como finalidade avaliar o desempenho obtido por nós alunos no decorrer do semestre.
+Segunda avaliação continua da matéria de Programação Orientada a Objeto da faculdade FACENS.
+Tem como finalidade avaliar o desempenho obtido por nós alunos no decorrer do da etapa.
+
+## Integrantes
+- Cauã Duarte
+- Fernando
+- Francine Ávilla
+- Gustavo
+- Matheus Oliveira
 
 ### Aluga.com
 
@@ -12,3 +19,4 @@ Aluga.com é uma sistema com a funcionalidade de registros e listagem de automó
 ### Ferramentas
 
 Para o desenvollvimento do projeto contamos com a linguagem Python
+
