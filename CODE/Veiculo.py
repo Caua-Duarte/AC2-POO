@@ -3,7 +3,7 @@ class Veiculo:
     veiculo_lv = {}
 
     #Cadastro do veiculo
-    def __init__(self,tipo_veiculo='c',modelo_veiculo='s',cor_veiculo='pt',placa_veiculo='r',tipo_combustivel='gc',ano_veiculo=int,potencia_motor=100,nao_cadastrar=False):
+    def __init__(self,tipo_veiculo,modelo_veiculo,cor_veiculo,placa_veiculo,tipo_combustivel,potencia_motor,ano_veiculo,nao_cadastrar=False):
 
         '''
         ***nao_cadastrar -> Informe "True" caso queria chamar o construtor mas não queira cadastrar nenhum veiculo***\n\n
@@ -35,31 +35,43 @@ class Veiculo:
             self.p_m = potencia_motor
 
             #Verifica se o tipo de veiculo está correto
-            if self.t_v not in __tipo_veiculo.keys():
-                print('\033[1;31mTipo de veiculo não encontrado\033[m')
+            if self.t_v != '':
+                if self.t_v not in __tipo_veiculo.keys():
+                    print('\033[1;31mTipo de veiculo não encontrado\033[m')
+                else:
+                    self.t_v = __tipo_veiculo[self.t_v]
             else:
-                self.t_v = __tipo_veiculo[self.t_v]
+                self.t_v = __tipo_veiculo['c']
 
             #Verifica se o modelo do veiculo está correto
             if self.t_v == 'Carro':
-                if self.m_v not in __mod_veic_carro:
-                    print('\033[1;31mModelo de carro não encontrado\033[m')
+                if self.m_v != '':
+                    if self.m_v not in __mod_veic_carro:
+                        print('\033[1;31mModelo de carro não encontrado\033[m')
+                    else:
+                        self.m_v = __mod_veic_carro[self.m_v]
                 else:
-                    self.m_v = __mod_veic_carro[self.m_v]
+                    self.m_v = __mod_veic_carro['s']
             else:
-                if self.m_v not in __mod_veic_moto:
-                    print('\033[1;31mModelo de moto não encontrado\033[m')
+                if self.m_v != '':
+                    if self.m_v not in __mod_veic_moto:
+                        print('\033[1;31mModelo de moto não encontrado\033[m')
+                    else:
+                        self.m_v = __mod_veic_moto[self.m_v]
                 else:
-                    self.m_v = __mod_veic_moto[self.m_v]
+                    self.m_v = __mod_veic_moto['t']
 
             #Verifica se a cor do veiculo está correta
-            if self.c_v not in __cor_veiculo.keys():
-                print('\033[1;31mCor inválida\033[m')
+            if self.c_v != '':
+                if self.c_v not in __cor_veiculo.keys():
+                    print('\033[1;31mCor inválida\033[m')
+                else:
+                    self.c_v = __cor_veiculo[self.c_v]
             else:
-                self.c_v = __cor_veiculo[self.c_v]
+                self.c_v = __cor_veiculo['pt']
 
             #Randomiza uma placa no formato "####-####" com caracteres numéricos e alfabéticos
-            if self.p_v == 'R':
+            if self.p_v == 'R' or self.p_v == '':
                 rand_placa = []
                 while len(rand_placa) < 9:
                     nxt_v = rd.randint(0,1)
@@ -86,18 +98,35 @@ class Veiculo:
                     print('\033[1;31mPlaca inválida\033[m')
 
             #Verifica se o tipo de combustível é válido
-            if self.t_c not in __tipo_combustivel.keys():
-                print('\033[1;31mTipo de gasolina inválida\033[m')
+            if self.t_c != '':
+                if self.t_c not in __tipo_combustivel.keys():
+                    print('\033[1;31mTipo de gasolina inválida\033[m')
+                else:
+                    self.t_c = __tipo_combustivel[self.t_c]
             else:
-                self.t_c = __tipo_combustivel[self.t_c]
+                self.t_c = __tipo_combustivel['gc']
 
             #Verifica se o ano do veiculo é válido
-            if dt.date.today().year < self.a_v:
-                print('\033[1;31mAno do veiculo inválido\033[m')
+            if self.a_v != '':
+                if self.a_v.isnumeric() != True:
+                    print('\033[1;31mAno do veiculo inválido\033[m')
+                else:
+                    self.a_v = int(self.a_v)
+                    if dt.date.today().year < self.a_v:
+                        print('\033[1;31mAno do veiculo inválido\033[m')
+            else:
+                self.a_v = 2015
 
             #Verifica se a potência do veiculo é válida
-            if self.p_m <= 0:
-                print('\033[1;31mPotência do motor inválida\033[m')
+            if self.p_m != '':
+                if self.p_m.isnumeric() != True:
+                    print('\033[1;31mPotência do motor inválida\033[m')
+                else:
+                    self.p_m = int(self.p_m)
+                    if self.p_m <= 0:
+                        print('\033[1;31mPotência do motor inválida\033[m')
+            else:
+                self.p_m = 110
 
             #Insere o veiculo em um array de veiculos livres caso ele ainda não esteja cadastrado
             if self.p_v not in self.veiculo_lv:
@@ -114,3 +143,8 @@ class Veiculo:
         Informa quais carros estão disponíveis
         '''
         return self.veiculo_lv
+
+#Run
+if __name__ == '__main__':
+    v1 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='r',potencia_motor=90)
+    print(v1.estoque_veiculo())
