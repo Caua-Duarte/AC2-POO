@@ -24,10 +24,17 @@ while True:
             while True :
             #Tente: Se executar e dar erro ele continua sem parar o sistema(If q acontece depois)
                 try:
-                    v1 = Veiculo(tipo_veiculo=input('\nDigite se é carro ou moto (c/m): '),modelo_veiculo=input('Digite o modelo do veiculo (e - Esportivo / c - Crossover / j - Jeep / s - Sedan / v - Van): ' ),cor_veiculo=input('Digite a cor do carro (pt - Preto / br - Branco / vm - Vermelho / vd - Verde / az - Azul / am - Amarelo / cz - Cinza): '),ano_veiculo=int(input('Digite o ano do veiculo: ')),placa_veiculo=input('Digite a placa do veículo (xxxx-xxxx) ou aperte r : '),potencia_motor=int(input('Digite a potencia do motor: ')))
-
+                    v1 = Veiculo(
+                        tipo_veiculo=input('\nDigite se é carro ou moto (c/m): '),
+                        modelo_veiculo=input('Digite o modelo da veiculo\nCarro - (e - Esportivo / c - Crossover / j - Jeep / s - Sedan / v - Van)\nMoto - (e - Esportivo / t - Trail / s - Scooter / or - Off-Road)\nR:'),
+                        cor_veiculo=input('Digite a cor do carro (pt - Preto / br - Branco / vm - Vermelho / vd - Verde / az - Azul / am - Amarelo / cz - Cinza): '),
+                        ano_veiculo=input('Digite o ano do veiculo: '),
+                        placa_veiculo=input('Digite a placa do veículo (xxxx-xxxx) ou aperte r : '),
+                        potencia_motor=input('Digite a potencia do motor: '),
+                        tipo_combustivel = input('Digite o tipo de combustivel: gc - Gasolina Comum / ga - Gasolina aditivada / gp - Gasolina Premium / gf - Gasolina Formulada / ec - Etanol Comum / ea - Etanol Aditivado / dc - Diesel Comum / da - Diesel Aditivado / bd - Biodiesel'))
+                    
                 except:
-                    print("\nOpsss! Algo deu errado!  desculpe o imprevisto. Tente nnovamente mais tarde!! =)")
+                    print("\nOpsss! Algo deu errado!  desculpe o imprevisto. Tente novamente mais tarde!! =)")
                     break
                         
                 else:
@@ -35,12 +42,11 @@ while True:
                     if entrada == "s":
                         continue
                     else:
-                        print('\n' + v1.estoque_veiculo())
+                        break
 
         def Inventory():
-            #   newInventory = Function()
-            #   newInventory.Cliente
-            print("\nfunta3")
+            print(v1.estoque_veiculo())
+            print("\nfunfa")
 
         def Reservation():
             #   newReservation = Function()
