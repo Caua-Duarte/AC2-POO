@@ -20,6 +20,8 @@ class Veiculo:
             import random as rd
             import datetime as dt
 
+            _erro = False
+
             __tipo_veiculo = {'c':'Carro','m':'Motocicleta'}
             __mod_veic_carro = {'e':'Esportivo','c':'Crossover','j':'Jeep','s':'Sedan','v':'Van'}
             __mod_veic_moto = {'e':'Esportivo','t':'Trail','s':'Scooter','or':'Off-Road'}
@@ -38,6 +40,7 @@ class Veiculo:
             if self.t_v != '':
                 if self.t_v not in __tipo_veiculo.keys():
                     print('\033[1;31mTipo de veiculo não encontrado\033[m')
+                    _erro = True
                 else:
                     self.t_v = __tipo_veiculo[self.t_v]
             else:
@@ -48,6 +51,7 @@ class Veiculo:
                 if self.m_v != '':
                     if self.m_v not in __mod_veic_carro:
                         print('\033[1;31mModelo de carro não encontrado\033[m')
+                        _erro = True
                     else:
                         self.m_v = __mod_veic_carro[self.m_v]
                 else:
@@ -56,6 +60,7 @@ class Veiculo:
                 if self.m_v != '':
                     if self.m_v not in __mod_veic_moto:
                         print('\033[1;31mModelo de moto não encontrado\033[m')
+                        _erro = True
                     else:
                         self.m_v = __mod_veic_moto[self.m_v]
                 else:
@@ -65,6 +70,7 @@ class Veiculo:
             if self.c_v != '':
                 if self.c_v not in __cor_veiculo.keys():
                     print('\033[1;31mCor inválida\033[m')
+                    _erro = True
                 else:
                     self.c_v = __cor_veiculo[self.c_v]
             else:
@@ -92,15 +98,19 @@ class Veiculo:
                         for c in self.p_v:
                             if c.isalnum() == False and c != '-':
                                 print('\033[1;31mPlaca inválida\033[m')
+                                _erro = True
                     else:
                         print('\033[1;31mPlaca inválida\033[m')
+                        _erro = True
                 else:
                     print('\033[1;31mPlaca inválida\033[m')
+                    _erro = True
 
             #Verifica se o tipo de combustível é válido
             if self.t_c != '':
                 if self.t_c not in __tipo_combustivel.keys():
                     print('\033[1;31mTipo de gasolina inválida\033[m')
+                    _erro = True
                 else:
                     self.t_c = __tipo_combustivel[self.t_c]
             else:
@@ -110,10 +120,12 @@ class Veiculo:
             if self.a_v != '':
                 if self.a_v.isnumeric() != True:
                     print('\033[1;31mAno do veiculo inválido\033[m')
+                    _erro = True
                 else:
                     self.a_v = int(self.a_v)
                     if dt.date.today().year < self.a_v:
                         print('\033[1;31mAno do veiculo inválido\033[m')
+                        _erro = True
             else:
                 self.a_v = 2015
 
@@ -121,18 +133,23 @@ class Veiculo:
             if self.p_m != '':
                 if self.p_m.isnumeric() != True:
                     print('\033[1;31mPotência do motor inválida\033[m')
+                    _erro = True
                 else:
                     self.p_m = int(self.p_m)
                     if self.p_m <= 0:
                         print('\033[1;31mPotência do motor inválida\033[m')
+                        _erro = True
             else:
                 self.p_m = 110
 
             #Insere o veiculo em um array de veiculos livres caso ele ainda não esteja cadastrado
-            if self.p_v not in self.veiculo_lv:
-                self.veiculo_lv[self.p_v] = (self.t_v,self.m_v,self.c_v,self.p_m,self.t_c,self.a_v)
+            if _erro == False:
+                if self.p_v not in self.veiculo_lv:
+                    self.veiculo_lv[self.p_v] = (self.t_v,self.m_v,self.c_v,self.p_m,self.t_c,self.a_v)
+                else:
+                    print('\033[1;31mVeiculo já cadastrado\033[m')
             else:
-                print('\033[1;31mVeiculo já cadastrado\033[m')
+                print('\033[1;31mInformações inválidas, veiculo não cadastrado\033[m')
         
         else:
             ...
