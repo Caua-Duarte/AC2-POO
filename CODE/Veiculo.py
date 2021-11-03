@@ -3,7 +3,7 @@ class Veiculo:
     veiculo_lv = {}
 
     #Cadastro do veiculo
-    def __init__(self,tipo_veiculo,modelo_veiculo,cor_veiculo,placa_veiculo,tipo_combustivel,potencia_motor,ano_veiculo,nao_cadastrar=False):
+    def __init__(self,tipo_veiculo='c',modelo_veiculo='s',cor_veiculo='pt',placa_veiculo='r',tipo_combustivel='gc',potencia_motor='',ano_veiculo='2015',nao_cadastrar=False):
 
         '''
         ***nao_cadastrar -> Informe "True" caso queria chamar o construtor mas não queira cadastrar nenhum veiculo***\n\n
@@ -118,7 +118,7 @@ class Veiculo:
 
             #Verifica se o ano do veiculo é válido
             if self.a_v != '':
-                if self.a_v.isnumeric() != True:
+                if str(self.a_v).isnumeric() != True:
                     print('\033[1;31mAno do veiculo inválido\033[m')
                     _erro = True
                 else:
@@ -131,7 +131,7 @@ class Veiculo:
 
             #Verifica se a potência do veiculo é válida
             if self.p_m != '':
-                if self.p_m.isnumeric() != True:
+                if str(self.p_m).isnumeric() != True:
                     print('\033[1;31mPotência do motor inválida\033[m')
                     _erro = True
                 else:
@@ -162,6 +162,4 @@ class Veiculo:
         return self.veiculo_lv
 
 #Run
-if __name__ == '__main__':
-    v1 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='r',potencia_motor=90)
-    print(v1.estoque_veiculo())
+v1 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='r',potencia_motor=90)

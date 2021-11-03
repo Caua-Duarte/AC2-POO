@@ -1,48 +1,64 @@
+from Veiculo import *
 
-class Reserva:
+class Reserva(Veiculo):
     
     def __init__(self, data_retirada, ck_list_entrega, ck_list_retirada):
         
+        tipo = super().__init__(tipo_veiculo)
+        modelo = super().__init__(modelo_veiculo)
+        self.v1 = veiculo.t_v
+        self.v2 = veiculo.m_v
         self.data_retirada = data_retirada
         self.ck_list_entrega = ck_list_entrega
         self.ck_list_retirada = ck_list_retirada 
 
-    def ValorReserva(self, veiculo):
-        if veiculo == "Carro_Esportivo":
-            self.valor_reserva = float(250.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+    def ValorReserva(self, tipo, ):
 
-        elif veiculo == "Carro_Crossover":
-            self.valor_reserva = float(150.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+        if tipo == "c":
 
-        elif veiculo == "Carro_Jipe":
-            self.valor_reserva = float(200)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+            if modelo == "e":
+                self.valor_reserva = float(250.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
 
-        elif veiculo == "Carro_Sedan":
-            self.valor_reserva = float(300.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+            elif modelo == "c":
+                self.valor_reserva = float(150.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
 
-        elif veiculo == "Carro_Van":
-            self.valor_reserva = float(400.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+            elif modelo == "j":
+                self.valor_reserva = float(200)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
 
-        elif veiculo == "Motocicleta_Scooter":
-            self.valor_reserva = float(50.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+            elif modelo == "s":
+                self.valor_reserva = float(300.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
 
-        elif veiculo == "Motocicleta_Esportivo":
-            self.valor_reserva = float(70.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+            elif modelo == "v":
+                self.valor_reserva = float(400.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
 
-        elif veiculo == "Motocicleta_Trail":
-            self.valor_reserva = float(60.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+            else:
+                print("Não existe isso seu cabeçudo!")
 
-        elif veiculo == "Motocicleta_OffRoad":
-            self.valor_reserva = float(55.00)*self.valor_adicional
-            print("O Valor Total Reserva: R$", self.valor_reserva)
+        elif tipo == "m":
+
+            if modelo == "e":
+                self.valor_reserva = float(50.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
+
+            elif modelo == "t":
+                self.valor_reserva = float(70.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
+
+            elif modelo == "s":
+                self.valor_reserva = float(60.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
+
+            elif modelo == "or":
+                self.valor_reserva = float(55.00)*self.valor_adicional
+                print("O Valor Total Reserva: R$", self.valor_reserva)
+            
+            else:
+                print("O mula já deu por hoje neh não aguento mais erro")
 
         else:
             print("Categoria não localizada")
@@ -60,6 +76,8 @@ class Reserva:
         else:
             print("Carro não esta conforme")
             
+
+'''
     def CKlistRetirada(self):
         if self.ck_list_retirada == True:
             print("Carro esta liberado")
@@ -71,3 +89,4 @@ V.ValorAdicional(2021-4-4)
 V.ValorReserva(veiculo="Carro_Jipe")
 V.CKlistEntrega()
 V.CKlistRetirada()
+'''

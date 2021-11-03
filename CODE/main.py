@@ -1,5 +1,6 @@
-from Veiculo import Veiculo
-from Cliente import Cliente
+from Veiculo import *
+from Cliente import *
+from Reserva import *
 
 
 while True:
