@@ -1,6 +1,6 @@
-class Veiculo:
+veiculo_lv = {}
 
-    veiculo_lv = {}
+class Veiculo:
 
     #Cadastro do veiculo
     def __init__(self,tipo_veiculo:str='c',modelo_veiculo:str='s',cor_veiculo:str='pt',placa_veiculo:str='r',tipo_combustivel:str='gc',potencia_motor:str='',ano_veiculo:str='2015',reserva:bool=False,nao_cadastrar:bool=False):
@@ -147,14 +147,14 @@ class Veiculo:
             #Insere o veiculo em um array de veiculos livres caso ele ainda não esteja cadastrado
             if _erro == False:
                 __ = True
-                for plc in self.veiculo_lv.keys():
+                for plc in veiculo_lv.keys():
                     if plc == self.p_v:
                         __ = False
                         break
                 if __ != True:
                     print('\033[1;31mVeiculo já cadastrado\033[m')
                 else:
-                    self.veiculo_lv[self.p_v] = (self.t_v,self.m_v,self.c_v,self.p_m,self.t_c,self.a_v)
+                    veiculo_lv[self.p_v] = (self.t_v,self.m_v,self.c_v,self.p_m,self.t_c,self.a_v)
             else:
                 print('Erro no cadastro')
 
@@ -163,4 +163,4 @@ class Veiculo:
         Mostra as informações de todos os veiculos\n
         Informa quais carros estão disponíveis
         '''
-        return self.veiculo_lv
+        return veiculo_lv
