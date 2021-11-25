@@ -3,7 +3,7 @@ class Veiculo:
     veiculo_lv = {}
 
     #Cadastro do veiculo
-    def __init__(self,tipo_veiculo='c',modelo_veiculo='s',cor_veiculo='pt',placa_veiculo='r',tipo_combustivel='gc',potencia_motor='',ano_veiculo='2015',nao_cadastrar=False):
+    def __init__(self,tipo_veiculo:str='c',modelo_veiculo:str='s',cor_veiculo:str='pt',placa_veiculo:str='r',tipo_combustivel:str='gc',potencia_motor:str='',ano_veiculo:str='2015',reserva:bool=False,nao_cadastrar:bool=False):
 
         '''
         ***nao_cadastrar -> Informe "True" caso queria chamar o construtor mas não queira cadastrar nenhum veiculo***\n\n
@@ -14,7 +14,8 @@ class Veiculo:
         tipo_combustivel -> Gasolina Comum: "gc", Gasolina aditivada: "ga", Gasolina Premium: "gp", Gasolina Formulada: "gf", Etanol Comum: "ec", Etanol Aditivado: "ea", Diesel Comum: "dc", Diesel Aditivado: "da", Biodiesel: "bd"\n
         ano_veiculo -> Informar o ano do veiculo como int()\n
         potencia_motor -> Potência medida em cavalos int()
-        '''
+        '''        
+
         if nao_cadastrar == False:
 
             import random as rd
@@ -91,6 +92,7 @@ class Veiculo:
                     else:
                         rand_placa.append(str(rand_char))
                 self.p_v = ''.join(rand_placa)
+
             #Verifica se a placa informada está correta
             else:
                 if len(self.p_v) == 9:
@@ -144,15 +146,17 @@ class Veiculo:
 
             #Insere o veiculo em um array de veiculos livres caso ele ainda não esteja cadastrado
             if _erro == False:
-                if self.p_v not in self.veiculo_lv:
-                    self.veiculo_lv[self.p_v] = (self.t_v,self.m_v,self.c_v,self.p_m,self.t_c,self.a_v)
-                else:
+                __ = True
+                for plc in self.veiculo_lv.keys():
+                    if plc == self.p_v:
+                        __ = False
+                        break
+                if __ != True:
                     print('\033[1;31mVeiculo já cadastrado\033[m')
+                else:
+                    self.veiculo_lv[self.p_v] = (self.t_v,self.m_v,self.c_v,self.p_m,self.t_c,self.a_v)
             else:
-                print('\033[1;31mInformações inválidas, veiculo não cadastrado\033[m')
-        
-        else:
-            ...
+                print('Erro no cadastro')
 
     def estoque_veiculo(self):
         '''
@@ -160,6 +164,3 @@ class Veiculo:
         Informa quais carros estão disponíveis
         '''
         return self.veiculo_lv
-
-#Run
-v1 = Veiculo(tipo_veiculo='m',modelo_veiculo='e',cor_veiculo='br',ano_veiculo=2018,placa_veiculo='r',potencia_motor=90)
